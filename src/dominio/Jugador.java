@@ -17,16 +17,13 @@ public class Jugador {
 
 	public boolean ingresarLetra(char letra) {
 		boolean resultado = false;
-		int posicion = 0;
 		for(int i=0; i<PALABRA_A_ADIVINAR.length; i++) {
 			if(PALABRA_A_ADIVINAR[i] == letra) {
 				resultado = true;
-				posicion = i;
+				incognita[i] = letra;
 			}
 		}
-		if(resultado) {
-			incognita[posicion] = letra;
-		} else {
+		if(!resultado) {
 			vidasRestantes--;
 		}
 		return resultado;
@@ -52,11 +49,7 @@ public class Jugador {
 	}
 	
 	public boolean compararPalabras() {
-		boolean resultado = false;
-		if(Arrays.equals(incognita, PALABRA_A_ADIVINAR)) {
-			resultado = true;
-		}
-		return resultado;
+		return Arrays.equals(incognita, PALABRA_A_ADIVINAR);
 	}
 	@Override
 	public String toString() {
